@@ -3,8 +3,14 @@ package com.project.cadastroninja.Missoes.Model;
 
 import com.project.cadastroninja.Ninjas.Model.NinjaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 
 @Entity
 @Table(name = "tb_missoes")
