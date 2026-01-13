@@ -17,18 +17,24 @@ public class NinjaModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "id")
     Long id;
 
+    @Column (name = "name")
     private String nome;
 
     @Column(unique = true)
     private String email;
 
+    @Column (name = "img_url")
+    private String imgUrl;
+
+    @Column (name = "idade")
     private int idade;
 
     // para os ninjas so teremos uma missão
     @ManyToOne
-    @JoinColumn(name ="missoes_id")
+    @JoinColumn(name ="missoes_id") //foreing key ou chave estrangeira
     private MissoesModel missoes;
 
 
