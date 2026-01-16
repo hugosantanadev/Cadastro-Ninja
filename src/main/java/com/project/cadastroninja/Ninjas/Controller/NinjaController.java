@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class NinjaController {
 
-    @GetMapping("/dento")
+    @GetMapping("/teste")
     String tuamae(){
-        return "Tuama";
+        return "funcionando";
     }
 }
