@@ -33,7 +33,7 @@ O esquema do banco de dados segue as seguintes relações:
     Missão: Contém atributos como id, título e descrição.
     Um Ninja pode ter apenas uma Missão, mas uma Missão pode ser atribuída a vários Ninjas.
 
-### 🥷 Endpoints da API
+## Endpoints da API
 
 - `GET /listar/:id` -> Lista um ninja específico pelo ID.
 - `GET /listar` -> Mostra todos os ninjas cadastrados.
