@@ -4,7 +4,7 @@
 Uma simples api feita com java e springboot usando exemplos de naruto para facilitar a apreendizagem
 As tecnologias escolhidas para a implementação são:
 
-   Visão Geral do Projeto
+   ##Visão Geral do Projeto
 
 Este sistema foi desenvolvido para gerenciar ninjas e suas missões. Cada ninja pode ser atribuído a uma única missão, enquanto uma missão pode ser associada a vários ninjas. As principais funcionalidades incluem:
 
@@ -12,7 +12,7 @@ Este sistema foi desenvolvido para gerenciar ninjas e suas missões. Cada ninja 
     Atribuição de uma missão para um ninja.
     Gerenciamento de missões e dos ninjas associados a elas.
 
-Tecnologias Utilizadas
+##Tecnologias Utilizadas
 
     Spring Boot: Para criação da aplicação web e gerenciamento de dependências.
     Banco de Dados H2: Banco de dados em memória para desenvolvimento e testes.
@@ -25,7 +25,7 @@ Tecnologias Utilizadas
     Docker: Para build externo do banco de dados
     SQL: Manipulação do banco de dados
 
-Design do Banco de Dados
+##Design do Banco de Dados
 
 O esquema do banco de dados segue as seguintes relações:
 
