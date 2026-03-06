@@ -33,16 +33,11 @@ O esquema do banco de dados segue as seguintes relações:
     Missão: Contém atributos como id, título e descrição.
     Um Ninja pode ter apenas uma Missão, mas uma Missão pode ser atribuída a vários Ninjas.
 
-## Endpoints
-   / Listar + id
-   vai listar o ninja por id
-   /listar
-   vai mostrar todos ninjas
-   /alterarid 
-   altera o ninja por id
-   /apagar + id
-   apaga o ninja selecionado
-   /deletarTudo
-   deleta todos o dados
-   /atualizar + id
-   atualiza o ninja selecionado
+### 🥷 Endpoints da API
+
+- `GET /listar/:id` -> Lista um ninja específico pelo ID.
+- `GET /listar` -> Mostra todos os ninjas cadastrados.
+- `PUT /alterar/:id` -> Altera os dados de um ninja pelo ID.
+- `DELETE /apagar/:id` -> Apaga o ninja selecionado.
+- `DELETE /deletarTudo` -> Deleta todos os dados do banco.
+- `PATCH /atualizar/:id` -> Atualiza informações parciais do ninja.
