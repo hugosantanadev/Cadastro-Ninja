@@ -18,7 +18,7 @@ public class NinjaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id")
-    Long id;
+    private Long id;
 
     @Column (name = "name")
     private String nome;

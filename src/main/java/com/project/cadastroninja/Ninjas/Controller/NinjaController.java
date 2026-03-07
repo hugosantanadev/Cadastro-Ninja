@@ -16,25 +16,24 @@ public class NinjaController {
        this.ninjaService = ninjaService;
    }
 
-    //add ninja CREATE
+        //add ninja CREATE
         @PostMapping("/criar")
-    public NinjaModel criarNinja(@RequestBody NinjaModel ninja){
+        public NinjaModel criarNinja(@RequestBody NinjaModel ninja){
 
-       return ninjaService.criarNinja(ninja);
-    }
+        return ninjaService.criarNinja(ninja);
+        }
 
-    // mostrar todos os ninjas CREATE
+        // mostrar todos os ninjas CREATE
 
-    @GetMapping("/listar/{id}")
-    public NinjaModel listarId(@PathVariable Long id){
+        @GetMapping("/listar/{Id}")
+        public NinjaModel listarId(@PathVariable Long id){
 
-       return ninjaService.BuscarPorId(id);
-    }
+        return ninjaService.BuscarPorId(id);
+        }
 
-    //listar todos os ninjas
-
+        //listar todos os ninjas
         @GetMapping("/listar")
-    public List<NinjaModel> AllId(){
+        public List<NinjaModel> AllId(){
 
        return ninjaService.listarNinjas();
         }
@@ -42,23 +41,36 @@ public class NinjaController {
         // mostrar ninja por id
 
         @GetMapping("/ninjaId")
-    public String MostrarNinjaId(){
+        public String MostrarNinjaId(){
         return "mostrando ninjaid";
     }
 
 
-    //alterar dados UPDATE
-        @PutMapping("/alterarId")
-    public String AlterarPorId(){
-        return "alterar";
+        //alterar dados UPDATE
+
+        @PutMapping("/alterar/{id}")
+        public NinjaModel AlterarPorId(@PathVariable Long id, @RequestBody NinjaModel ninjaAtualizado){
+        return ninjaService.Atualizar(id,ninjaAtualizado);
         }
 
 
         // deletar ninja DELETE
-        @DeleteMapping("/apagar")
-    public String ApagarId(){
-        return "apagaid";
+        @DeleteMapping("/apagar/{Id}")
+    public void ApagarId(@PathVariable Long Id){
+        ninjaService.deletarNinja(Id);
         }
+
+
+        @DeleteMapping("/deletarTudo")
+        public void deletarTudo(){
+       ninjaService.deletarTudo();
+        }
+
+
+
+
+
+
 
 
 }
