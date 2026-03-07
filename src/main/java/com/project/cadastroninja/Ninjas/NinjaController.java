@@ -1,7 +1,5 @@
-package com.project.cadastroninja.Ninjas.Controller;
+package com.project.cadastroninja.Ninjas;
 
-import com.project.cadastroninja.Ninjas.Model.NinjaModel;
-import com.project.cadastroninja.Ninjas.NinjaService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

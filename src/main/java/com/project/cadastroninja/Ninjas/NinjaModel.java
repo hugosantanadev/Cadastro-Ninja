@@ -1,4 +1,4 @@
-package com.project.cadastroninja.Ninjas.Model;
+package com.project.cadastroninja.Ninjas;
 import com.project.cadastroninja.Missoes.Model.MissoesModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

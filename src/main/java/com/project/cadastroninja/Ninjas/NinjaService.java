@@ -1,14 +1,11 @@
 package com.project.cadastroninja.Ninjas;
 
 
-import com.project.cadastroninja.Ninjas.Model.NinjaModel;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class NinjaService {
