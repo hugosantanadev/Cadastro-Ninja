@@ -1,4 +1,4 @@
-package com.project.cadastroninja.Missoes.Model;
+package com.project.cadastroninja.Missoes;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
