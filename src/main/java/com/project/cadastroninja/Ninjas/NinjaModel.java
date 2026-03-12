@@ -1,5 +1,5 @@
-package com.project.cadastroninja.Ninjas.Model;
-import com.project.cadastroninja.Missoes.Model.MissoesModel;
+package com.project.cadastroninja.Ninjas;
+import com.project.cadastroninja.Missoes.MissoesModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,6 +31,9 @@ public class NinjaModel {
 
     @Column (name = "idade")
     private int idade;
+
+    @Column (name = "rank")
+    private String rank;
 
     // para os ninjas so teremos uma missão
     @ManyToOne

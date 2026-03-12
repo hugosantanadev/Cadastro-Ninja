@@ -1,8 +1,8 @@
-package com.project.cadastroninja.Missoes.Model;
+package com.project.cadastroninja.Missoes;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.project.cadastroninja.Ninjas.Model.NinjaModel;
+import com.project.cadastroninja.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
