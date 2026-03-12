@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class NinjaService {
@@ -15,22 +16,23 @@ public class NinjaService {
     private NinjaRepository ninjaRepository;
     private NinjaMapper ninjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
         this.ninjaMapper = ninjaMapper;
     }
 
     //listar ninjas
 
-    public List<NinjaModel> listarNinjas(){
-        return ninjaRepository.findAll();
+    public List<NinjaDTO> listarNinjas(){
+       List<NinjaModel> ninjas = ninjaRepository.findAll();
+       return ninjas.stream().map(ninjaMapper::map).collect(Collectors.toList());
     }
 
     //buscar por id
-    public NinjaModel BuscarPorId(Long id){
+    public NinjaDTO BuscarPorId(Long id){
 
     Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id);
-    return ninjaPorId.orElse(null);
+    return ninjaPorId.map(ninjaMapper::map).orElse(null);
     }
 
     // criar ninjas
@@ -52,12 +54,18 @@ public class NinjaService {
 
 
     //vai buscar por id e depois descobrir se ele existe, vai buscar atravez do metodo do jpa
-    public NinjaModel Atualizar(Long Id, NinjaModel ninjaAtualizado){
-        if (ninjaRepository.existsById(Id)) {
-            ninjaAtualizado.setId(Id);
+    public NinjaDTO Atualizar(Long Id, NinjaDTO ninjaDto){
+        Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(Id); //se o id existir
+        if (ninjaPorId.isPresent()){
+            NinjaModel ninjaAtualizado = ninjaMapper.map(ninjaDto); // ninjaAtualizado é uma variavel que é atribuida oq no dto
+            ninjaAtualizado.setId(Id); //muda oq esta no id
+            NinjaModel ninja = ninjaRepository.save(ninjaAtualizado);//salva
+            return ninjaMapper.map(ninja);
 
         }
-        return ninjaRepository.save(ninjaAtualizado);
+
+        return null;
+
     }
 
 
