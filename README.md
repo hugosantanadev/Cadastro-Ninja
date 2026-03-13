@@ -1,43 +1,31 @@
-# Cadastro Ninja
+# 🥷 Cadastro de Ninjas & Missões
 
-## Descrição 
-Uma simples api feita com java e springboot usando exemplos de naruto para facilitar a apreendizagem
-As tecnologias escolhidas para a implementação são:
+Sistema Full Stack desenvolvido para gerenciar o recrutamento de ninjas e a atribuição de missões de alto nível.
 
-   ## Visão Geral do Projeto
+## 🚀 Tecnologias Utilizadas
+* **Java 17**
+* **Spring Boot 3**
+* **Spring Data JPA** (Persistência de dados)
+* **Thymeleaf** (Motor de template para a UI)
+* **Bootstrap 5** (Estilização)
+* **Lombok** (Produtividade no código)
+* **H2/MySQL** (Banco de dados)
 
-Este sistema foi desenvolvido para gerenciar ninjas e suas missões. Cada ninja pode ser atribuído a uma única missão, enquanto uma missão pode ser associada a vários ninjas. As principais funcionalidades incluem:
+## 🏗️ Padrões de Projeto (Design Patterns)
+Este projeto não é apenas um CRUD. Ele implementa padrões de mercado como:
+- **DTO (Data Transfer Object):** Para tráfego de dados seguro entre camadas.
+- **Mappers:** Classes dedicadas para conversão de Entidades em DTOs, mantendo o Service limpo.
+- **Relacionamentos JPA:** Gerenciamento de relações `@OneToMany` entre Missões e Ninjas.
+- **RESTful API:** Endpoints padronizados com os verbos HTTP corretos e códigos de status (`201 Created`, `404 Not Found`, etc).
 
-    Cadastro de ninjas com nome, idade, email e rank.
-    Atribuição de uma missão para um ninja.
-    Gerenciamento de missões e dos ninjas associados a elas.
+## 📸 Interface
+A interface foi construída com Thymeleaf e permite:
+- Listagem de ninjas com seus respectivos ranks e fotos.
+- Visualização condicional de missões (mostra "Sem Missão" caso o ninja esteja disponível).
+- Design responsivo via Bootstrap.
 
-## Tecnologias Utilizadas
-
-    Spring Boot: Para criação da aplicação web e gerenciamento de dependências.
-    Banco de Dados H2: Banco de dados em memória para desenvolvimento e testes.
-    Flyway: Para gerenciamento de migrações do banco de dados.
-    JPA (Java Persistence API): Para mapeamento objeto-relacional (ORM).
-    Git: Controle de versão para gerenciamento de mudanças no código.
-    GitHub: Hospedagem do repositório para controle de versão.
-    Spring Data JPA: Para interação com o banco de dados.
-    Maven: Para build e gerenciamento de dependências do projeto.
-    Docker: Para build externo do banco de dados
-    SQL: Manipulação do banco de dados
-
-## Design do Banco de Dados
-
-O esquema do banco de dados segue as seguintes relações:
-
-    Ninja: Contém atributos como id, nome, idade, email e rank.
-    Missão: Contém atributos como id, título e descrição.
-    Um Ninja pode ter apenas uma Missão, mas uma Missão pode ser atribuída a vários Ninjas.
-
-## Endpoints da API
-
-- `GET /listar/:id` -> Lista um ninja específico pelo ID.
-- `GET /listar` -> Mostra todos os ninjas cadastrados.
-- `PUT /alterar/:id` -> Altera os dados de um ninja pelo ID.
-- `DELETE /apagar/:id` -> Apaga o ninja selecionado.
-- `DELETE /deletarTudo` -> Deleta todos os dados do banco.
-- `PATCH /atualizar/:id` -> Atualiza informações parciais do ninja.
+## 🛠️ Como rodar o projeto
+1. Clone o repositório.
+2. Certifique-se de ter o Maven instalado.
+3. Execute `./mvnw spring-boot:run`.
+4. Acesse `http://localhost:8080/ui/listar`.
