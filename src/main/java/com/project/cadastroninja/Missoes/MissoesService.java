@@ -1,49 +1,55 @@
 package com.project.cadastroninja.Missoes;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class MissoesService {
-    public MissoesRepository missoesRepository;
 
-    public MissoesService(MissoesRepository missoesRepository) {
+    private final MissoesRepository missoesRepository;
+    private final MissoesMapper missoesMapper; // O Mapper precisa estar aqui!
+
+    // Construtor atualizado com os dois parâmetros
+    public MissoesService(MissoesRepository missoesRepository, MissoesMapper missoesMapper) {
         this.missoesRepository = missoesRepository;
+        this.missoesMapper = missoesMapper;
     }
 
-    // cria um ArrayList para puxar todos as missoes
-    public List<MissoesModel> listarMissoes(){
-        return missoesRepository.findAll();
+    public List<MissoesDTO> listarMissoes() {
+        List<MissoesModel> missoes = missoesRepository.findAll();
+        return missoes.stream()
+                .map(missoesMapper::map) // Transforma cada Model em DTO
+                .collect(Collectors.toList());
     }
 
-    //resquestbody para mandar algo para o banco de dados
-    public MissoesModel criarMissoes(@RequestBody MissoesModel missoes){
-        return missoesRepository.save(missoes);
+    public MissoesDTO criarMissoes(MissoesDTO missoesDTO) {
+        MissoesModel model = missoesMapper.map(missoesDTO);
+        model = missoesRepository.save(model);
+        return missoesMapper.map(model);
     }
 
-    //busca o id e caso não exista ele retorna nulo
-    public MissoesModel buscarPorId(Long id){
-        Optional<MissoesModel> missoesPorId = missoesRepository.findById(id);
-        return missoesPorId.orElse(null);
-
+    public MissoesDTO buscarPorId(Long id) {
+        return missoesRepository.findById(id)
+                .map(missoesMapper::map) // Se achar, mapeia para DTO
+                .orElse(null);
     }
 
-    public void deletarMissoes(Long id){
+    public MissoesDTO atualizar(Long id, MissoesDTO missoesDTO) {
+        if (missoesRepository.existsById(id)) {
+            MissoesModel model = missoesMapper.map(missoesDTO);
+            model.setId(id);
+            model = missoesRepository.save(model);
+            return missoesMapper.map(model);
+        }
+        return null;
+    }
+
+    public void deletarMissoes(Long id) {
         missoesRepository.deleteById(id);
     }
 
-    public MissoesModel atualizar (long id, MissoesModel missoesAtulizado){
-        if(missoesRepository.existsById(id)){
-            missoesAtulizado.setId(id);
-        }
-        return missoesRepository.save(missoesAtulizado);
-    }
-
-    public void deletartudo (){
+    public void deletartudo() {
         missoesRepository.deleteAll();
     }
-
 }

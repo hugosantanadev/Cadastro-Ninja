@@ -15,8 +15,9 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 public class NinjaController {
 
     private final NinjaRepository ninjaRepository;
-    private NinjaService ninjaService;
-   public NinjaController(NinjaService ninjaService, NinjaRepository ninjaRepository) {
+    private final NinjaService ninjaService;
+
+    public NinjaController(NinjaService ninjaService, NinjaRepository ninjaRepository) {
        this.ninjaService = ninjaService;
        this.ninjaRepository = ninjaRepository;
    }

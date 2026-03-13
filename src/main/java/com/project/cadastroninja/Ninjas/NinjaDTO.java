@@ -1,5 +1,6 @@
 package com.project.cadastroninja.Ninjas;
 
+import com.project.cadastroninja.Missoes.MissoesDTO;
 import com.project.cadastroninja.Missoes.MissoesModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +17,6 @@ public class NinjaDTO {
     private String email;
     private String imgUrl;
     private int idade;
-    private MissoesModel missoes;
+    private MissoesDTO missoes;
     private String rank;
 }

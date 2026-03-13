@@ -1,10 +1,7 @@
 package com.project.cadastroninja.Ninjas;
 import com.project.cadastroninja.Missoes.MissoesModel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "tb_cadastro")
@@ -13,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString(exclude = "missoes")
 public class NinjaModel {
 
     @Id
